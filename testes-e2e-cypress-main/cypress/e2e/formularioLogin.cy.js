@@ -1,7 +1,16 @@
 describe('Forumalário de Login', ()=> {
     beforeEach(() =>{
-        cy.visit('http://localhost:3000/');
+        cy.visit('/');
     })
+
+     it('Login realizado com sucesso', () => {
+        cy.getByData("botao-login").click(),
+        cy.getByData("email-input").type("email@teste.com"),
+        cy.getByData("senha-input").type("SenhaTeste!"),
+        cy.getByData("botao-enviar").click(),
+        cy.getById("data-atual")
+    })
+
 
     it('Não deve permitir um email inválido', () => {
         cy.getByData("botao-login").click(),
